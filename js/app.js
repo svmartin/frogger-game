@@ -21,10 +21,10 @@ class Enemy {
   // update Enemy movement
   update(dt) {
     if (this.x < 506) {
-        this.x += this.speed * dt;
+      this.x += this.speed * dt;
     } else {
-        this.x = -100;
-        this.y = GameHelper.randomRow(enemyRows);
+      this.x = -100;
+      this.y = GameHelper.randomRow(enemyRows);
     }
     // determine if there was a collision
     if (this.row === player.row) {
@@ -43,11 +43,11 @@ class Enemy {
     }
 
     if (this.y === 58) {
-        this.row = 5;
+      this.row = 5;
     } else if (this.y === 141) {
-        this.row = 4;
+      this.row = 4;
     } else {
-        this.row = 3;
+      this.row = 3;
     }
   }
 
@@ -79,20 +79,17 @@ class Player {
 
   handleInput(keyPressed) {
     if (keyPressed === 'left' && this.x > 0) {
-        this.x -= 100;
-        this.column -= 1;
-    }
-    else if (keyPressed === 'right' && this.x < 400) {
-        this.x += 100;
-        this.column += 1;
-    }
-    else if (keyPressed === 'up' && this.y > 25) {
-        this.y -= 82;
-        this.row += 1;
-    }
-    else if (keyPressed === 'down' && this.y < 400) {
-        this.y += 82;
-        this.row -= 1;
+      this.x -= 100;
+      this.column -= 1;
+    } else if (keyPressed === 'right' && this.x < 400) {
+      this.x += 100;
+      this.column += 1;
+    } else if (keyPressed === 'up' && this.y > 25) {
+      this.y -= 82;
+      this.row += 1;
+    } else if (keyPressed === 'down' && this.y < 400) {
+      this.y += 82;
+      this.row -= 1;
     }
   }
 
@@ -124,7 +121,7 @@ class GameHelper {
   constructor() {}
 
   static randomRow(possibleRows) {
-    return enemyRows[Math.floor(Math.random() * (3 - 0), + 0)];
+    return enemyRows[Math.floor(Math.random() * (3 - 0), +0)];
   }
 
   static randomSpeed(min, max) {
@@ -146,7 +143,6 @@ class GameHelper {
   }
 }
 
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -154,16 +150,14 @@ player = new Player();
 Enemy.createEnemies(4);
 console.log(allEnemies);
 
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
-
-    player.handleInput(allowedKeys[e.keyCode]);
+  var allowedKeys = {
+    37: 'left',
+    38: 'up',
+    39: 'right',
+    40: 'down'
+  };
+  player.handleInput(allowedKeys[e.keyCode]);
 });
